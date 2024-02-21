@@ -1,0 +1,16 @@
+<app-navigation></app-navigation>
+<app-favorites (searchValue)="handleSearchValue($event)"></app-favorites>
+
+<button
+  mat-raised-button
+  color="primary"
+  (click)="onSearch()"
+  class="search-button"
+>
+  Search Your News
+</button>
+<app-news-tile
+  class="news-tile"
+  *ngFor="let news of newsData?.data"
+  [news]="news"
+></app-news-tile>

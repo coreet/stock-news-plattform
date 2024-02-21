@@ -1,0 +1,11 @@
+<div class="news-tile">
+  <span class="news-tile__published">{{ news.published_at }}</span>
+  <img class="news-tile__image" src="{{ news.image_url }}" />
+  <div class="news-tile__content">
+    <h3 class="news-tile__content--headline">{{ news.title }}</h3>
+    <p class="news-tile__content--description">{{ news.description }}</p>
+    <a class="news-tile__content--source" href="{{ news.url }}"
+      >Source: {{ news.source }}</a
+    >
+  </div>
+</div>
