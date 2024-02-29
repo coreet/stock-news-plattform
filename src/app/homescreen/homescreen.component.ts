@@ -2,7 +2,10 @@ import { AlphavantageDataSerivce } from './../alphavantagedata.service';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MarketauxDataService } from '../marketauxdata.service';
-import { NavigationComponent } from '../navigation/navigation.component';
+import {
+  NavTypes,
+  NavigationComponent,
+} from '../navigation/navigation.component';
 import { NewsTileComponent } from '../news-tile/news-tile.component';
 import { FavoritesComponent } from '../favorites/favorites.component';
 import { MatInputModule } from '@angular/material/input';
@@ -28,6 +31,8 @@ export class HomescreenComponent implements OnInit {
   public newsData!: any;
   private searchValue!: any;
   public stockData: Array<any> = [];
+  public currentView: NavTypes = 'News';
+
   constructor(
     private marketauxDataService: MarketauxDataService,
     private alphavantageDataSerivce: AlphavantageDataSerivce
@@ -78,5 +83,9 @@ export class HomescreenComponent implements OnInit {
         '5. volume': '532534',
       },
     ];
+  }
+
+  public handleNav(event: NavTypes) {
+    this.currentView = event;
   }
 }

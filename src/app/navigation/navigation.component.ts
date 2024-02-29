@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,4 +18,13 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
 })
-export class NavigationComponent {}
+export class NavigationComponent {
+  @Output() navToggle = new EventEmitter();
+  constructor() {}
+
+  onToggleSidenav(type: NavTypes) {
+    this.navToggle.emit(type);
+  }
+}
+
+export type NavTypes = 'News' | 'Favorites' | 'Profile';
