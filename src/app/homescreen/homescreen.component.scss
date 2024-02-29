@@ -13,13 +13,13 @@
 .buttons {
     position: absolute;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     height: calc(100vh - 64px);
     right: 0;
-    top: 64px;
+    bottom: 0;
 }
 
 .stock-data {
-    position: absolute;
-    top: 64px;
+    display: flex;
+    flex-wrap: wrap;
 }

@@ -20,21 +20,13 @@
 <ng-template [ngIf]="currentView === 'Favorites'">
   <div class="stock-data">
     <app-stock-data
-      *ngFor="let stock of stockData"
+      *ngFor="let stock of stockData; index as $index"
       [stockData]="stock"
+      [stockName]="getStockName($index)"
     ></app-stock-data>
   </div>
   <div class="buttons">
     <app-favorites (searchValue)="handleSearchValue($event)"></app-favorites>
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="onSearch()"
-      class="search-button"
-      style="margin-top: 10px"
-    >
-      Search Your News
-    </button>
   </div>
 </ng-template>
 

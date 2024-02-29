@@ -1,18 +1,31 @@
-<form [formGroup]="stringArrayForm" (ngSubmit)="onSubmit()">
-  <div formArrayName="strings">
-    <div *ngFor="let string of strings.controls; let i = index">
-      <mat-form-field appearance="fill">
-        <input matInput [formControlName]="i" placeholder="Stock Symbol" />
-        <button mat-button matSuffix type="button" (click)="removeString(i)">
-          Remove
-        </button>
-      </mat-form-field>
+<div
+  class="menu-container"
+  [@menuAnimation]="menuOpen ? 'expanded' : 'collapsed'"
+>
+  <form [formGroup]="stringArrayForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="strings">
+      <div *ngFor="let string of strings.controls; let i = index">
+        <mat-form-field appearance="fill">
+          <input matInput [formControlName]="i" placeholder="Stock Symbol" />
+          <button mat-button matSuffix type="button" (click)="removeString(i)">
+            Remove
+          </button>
+        </mat-form-field>
+      </div>
     </div>
-  </div>
-  <button mat-raised-button type="button" (click)="addString()">
-    Add String
-  </button>
-  <button style="float: right" mat-raised-button color="primary" type="submit">
-    Submit
-  </button>
-</form>
+    <button mat-raised-button type="button" (click)="addString()">
+      Add String
+    </button>
+    <button
+      style="float: right"
+      mat-raised-button
+      color="primary"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+<button class="burger-button" mat-icon-button (click)="toggleMenu()">
+  <mat-icon>{{ menuOpen ? "close" : "menu" }}</mat-icon>
+</button>

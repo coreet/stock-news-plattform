@@ -51,6 +51,8 @@ export class HomescreenComponent implements OnInit {
     } else {
       this.searchValue = value;
     }
+
+    this.onSearch();
   }
 
   public onSearch() {
@@ -140,5 +142,9 @@ export class HomescreenComponent implements OnInit {
   public onDemoData() {
     this.handleDemoData();
     this.demo = true;
+  }
+
+  public getStockName(index: number) {
+    return this.stockData[index].symbol;
   }
 }

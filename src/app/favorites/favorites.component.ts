@@ -4,6 +4,14 @@ import { FormBuilder, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-favorites',
@@ -14,13 +22,36 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatIconModule,
   ],
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.scss'],
+  animations: [
+    trigger('menuAnimation', [
+      state(
+        'collapsed',
+        style({
+          height: '0',
+          display: 'none',
+        })
+      ),
+      state(
+        'expanded',
+        style({
+          height: '*',
+          display: 'block',
+        })
+      ),
+      transition('collapsed => expanded', [animate('0.3s ease-out')]),
+      transition('expanded => collapsed', [animate('0.3s ease-in')]),
+    ]),
+  ],
 })
 export class FavoritesComponent implements OnInit {
   public stringArrayForm!: any;
   public demoData: string[] = ['AAPL', 'GOOGL', 'MSFT'];
+  public menuOpen: boolean = false;
+
   @Input() demo: boolean = false;
   @Output() searchValue = new EventEmitter<string[] | string>();
 
@@ -49,10 +80,15 @@ export class FavoritesComponent implements OnInit {
 
   onSubmit() {
     this.searchValue.emit(this.stringArrayForm.value);
+    this.menuOpen = false;
   }
 
   onDemoData() {
     this.searchValue.emit('DEMO');
     this.demo = true;
+  }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 }

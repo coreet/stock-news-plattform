@@ -1,5 +1,12 @@
-<div class="stock">
-  <div *ngFor="let stock of stockData | keyvalue">
-    {{ stock.key }}: {{ stock.value }}
-  </div>
-</div>
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Stock Information </mat-card-title>
+    <mat-card-subtitle> {{ stockName }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-container *ngFor="let stock of stockData | keyvalue">
+      <p *ngIf="stock.key !== 'symbol'">{{ stock.key }} {{ stock.value }}</p>
+    </ng-container>
+  </mat-card-content>
+</mat-card>
