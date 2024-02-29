@@ -1,11 +1,18 @@
-<div class="news-tile">
-  <span class="news-tile__published">{{ news.published_at }}</span>
-  <img class="news-tile__image" src="{{ news.image_url }}" />
-  <div class="news-tile__content">
-    <h3 class="news-tile__content--headline">{{ news.title }}</h3>
-    <p class="news-tile__content--description">{{ news.description }}</p>
-    <a class="news-tile__content--source" href="{{ news.url }}"
-      >Source: {{ news.source }}</a
-    >
-  </div>
-</div>
+<mat-card>
+  <mat-card-header>
+    <div
+      mat-card-avatar
+      class="example-header-image"
+      [style.background-image]="getImageUrl(news.image_url)"
+    ></div>
+    <mat-card-title>{{ news.title }}</mat-card-title>
+    <mat-card-subtitle>{{ news.source }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="news.image_url" alt="News Image" />
+  <mat-card-content>
+    <p>{{ news.description }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="openLink(news.url)">Read More</button>
+  </mat-card-actions>
+</mat-card>

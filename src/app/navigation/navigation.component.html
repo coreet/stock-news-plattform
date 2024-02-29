@@ -1,17 +1,22 @@
 <nav mat-tab>
-  <mat-toolbar color="primary"
-    ><mat-icon>menu</mat-icon
-    ><img
-      src="assets/216138_chart_line_icon.png"
-      alt="logo"
-      width="36px"
-    /><span>Stock News</span><span class="spacer"></span
-    ><mat-nav-list>
-      <a (click)="onToggleSidenav('News')" mat-list-item>News</a>
-      <a (click)="onToggleSidenav('Favorites')" mat-list-item>Favorites</a
-      ><a (click)="onToggleSidenav('Profile')" mat-list-item
-        >Profile</a
-      ></mat-nav-list
-    ></mat-toolbar
-  >
+  <mat-toolbar color="primary">
+    <button class="burger-button" mat-icon-button (click)="toggleMenu()">
+      <mat-icon>{{ menuOpen ? "close" : "menu" }}</mat-icon>
+    </button>
+    <img src="assets/216138_chart_line_icon.png" alt="logo" width="36px" /><span
+      >Stock News</span
+    ><span class="spacer"></span
+  ></mat-toolbar>
 </nav>
+<div
+  class="menu-container"
+  [@menuAnimation]="menuOpen ? 'expanded' : 'collapsed'"
+>
+  <mat-nav-list>
+    <a (click)="onToggleSidenav('News')" mat-list-item>News</a>
+    <a (click)="onToggleSidenav('Favorites')" mat-list-item>Favorites</a
+    ><a (click)="onToggleSidenav('Profile')" mat-list-item
+      >Profile</a
+    ></mat-nav-list
+  >
+</div>

@@ -1,37 +1,4 @@
-.news-tile {
-    position: relative;
-    display: block;
-    width: 400px;
-
-    &__published {
-        position: absolute;
-        top: 0;
-        left: 0;
-        color: white;
-    }
-
-    &__image {
-        width: 100%;
-        object-fit: cover;
-    }
-
-    &__content {
-        padding: 20px;
-        background-color: white;
-        border: 2px solid black;
-
-        &--headline {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        &--description {
-            font-size: 16px;
-        }
-
-        &--source {
-            font-size: 12px;
-            margin-top: 10px;
-        }
-    }
+mat-card {
+    max-width: 400px;
+    margin: 16px auto;
 }
