@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -18,16 +18,23 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.scss'],
 })
-export class FavoritesComponent {
+export class FavoritesComponent implements OnInit {
   public stringArrayForm!: any;
-  @Output() searchValue = new EventEmitter<string[]>();
+  public demoData: string[] = ['AAPL', 'GOOGL', 'MSFT'];
+  @Input() demo: boolean = false;
+  @Output() searchValue = new EventEmitter<string[] | string>();
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
+    if (this.demo) {
+      this.onDemoData();
+    }
+
     this.stringArrayForm = this.formBuilder.group({
       strings: this.formBuilder.array([]),
     });
   }
-
   get strings(): FormArray {
     return this.stringArrayForm.get('strings') as FormArray;
   }
@@ -45,6 +52,7 @@ export class FavoritesComponent {
   }
 
   onDemoData() {
-    this.searchValue.emit(['AAPL', 'GOOGL', 'TSLA']);
+    this.searchValue.emit('DEMO');
+    this.demo = true;
   }
 }

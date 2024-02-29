@@ -6,6 +6,15 @@
     *ngFor="let news of newsData?.data"
     [news]="news"
   ></app-news-tile>
+  <button
+    *ngIf="!demo"
+    style="position: absolute; bottom: 0; right: 0"
+    mat-raised-button
+    color="primary"
+    (click)="onDemoData()"
+  >
+    Demo Data
+  </button>
 </ng-container>
 
 <ng-template [ngIf]="currentView === 'Favorites'">
