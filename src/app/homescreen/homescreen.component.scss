@@ -9,3 +9,17 @@
     gap: 20px;
 
 }
+
+.buttons {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 64px);
+    right: 0;
+    top: 64px;
+}
+
+.stock-data {
+    position: absolute;
+    top: 64px;
+}

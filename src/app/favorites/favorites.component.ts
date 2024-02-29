@@ -43,4 +43,8 @@ export class FavoritesComponent {
   onSubmit() {
     this.searchValue.emit(this.stringArrayForm.value);
   }
+
+  onDemoData() {
+    this.searchValue.emit(['AAPL', 'GOOGL', 'TSLA']);
+  }
 }

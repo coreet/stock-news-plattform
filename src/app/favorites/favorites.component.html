@@ -1,14 +1,8 @@
-<!-- string-array-input.component.html -->
-
 <form [formGroup]="stringArrayForm" (ngSubmit)="onSubmit()">
   <div formArrayName="strings">
     <div *ngFor="let string of strings.controls; let i = index">
       <mat-form-field appearance="fill">
-        <input
-          matInput
-          [formControlName]="i"
-          placeholder="Stock Symbol"
-        />
+        <input matInput [formControlName]="i" placeholder="Stock Symbol" />
         <button mat-button matSuffix type="button" (click)="removeString(i)">
           Remove
         </button>
@@ -18,5 +12,16 @@
   <button mat-raised-button type="button" (click)="addString()">
     Add String
   </button>
-  <button mat-raised-button color="primary" type="submit">Submit</button>
+  <button style="float: right" mat-raised-button color="primary" type="submit">
+    Submit
+  </button>
 </form>
+
+<button
+  style="position: absolute; bottom: 0; right: 0"
+  mat-raised-button
+  color="primary"
+  (click)="onDemoData()"
+>
+  Demo Data
+</button>
